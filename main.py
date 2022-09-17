@@ -18,20 +18,20 @@ if option == 'Partidos':
     option2 = st.sidebar.selectbox('Partidos',
                                    ['Jornada1', 'Jornada2'])
     if option2 == 'Jornada1':
-        st.dataframe(df1)
+        st.table(df1)
     elif option2 == 'Jornada2':
-        st.dataframe(df2)
+        st.table(df2)
 
 if option == 'Estadisticas':
     option3 = st.sidebar.selectbox('Estadisticas Agregadas',
                                    ['Pichichi', 'MVPs','W/L'])
     if option3 == 'Pichichi':
         st.title('Maximo Goleador')
-        st.dataframe(df_goles)
+        st.table(df_goles)
     elif option3 == 'MVPs':
         st.title('Clasificacion MVP')
         st.dataframe(df_mvps)
     elif option3 == 'W/L':
         st.title('Winrate')
-        st.dataframe(df_wins)
+        st.table(df_wins)
         
