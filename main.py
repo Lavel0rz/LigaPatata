@@ -7,6 +7,13 @@ st.title('Liga Patata')
 
 option = st.sidebar.selectbox('Home',
                                       ['HOME','Partidos','Estadisticas'])
+if option == 'HOME':
+    st.metric(label='Pichichi', value=(df_goles[:1]['Jugadores'][0]+' ' +str(df_goles[:1]['GolesTotales'][0])), delta=3, delta_color="normal", help=None)
+    st.metric(label='Maximo MVP', value=(df_mvps[:1]['Jugadores'][0]+' '+ str(df_mvps[:1]['MVPTotales'][0])),
+              delta=0, delta_color="normal", help=None)
+    st.metric(label='El Victorioso', value=(df_wins.sort_values(by='TotalWL',ascending=False)[:1]['Jugadores'].values[0]+' '+df_wins.sort_values(by='TotalWL',ascending=False)[:1]['TotalWL'].values[0]),
+              delta=1, delta_color="normal", help=None)
+
 if option == 'Partidos':
     option2 = st.sidebar.selectbox('Partidos',
                                    ['Jornada1', 'Jornada2'])
