@@ -41,16 +41,25 @@ df_mvps.drop('index', axis=1, inplace=True)
 
 wins = []
 jogadores = []
+winloss = []
+perc = []
 for jugador in Todos:
     if jugador in list(df1['Jugadores']) and jugador in list(df2['Jugadores']):
-        wins.append(df1.groupby(['Jugadores'])['W/L'].sum()[jugador] + df2.groupby(['Jugadores'])['W/L'].sum()[
-            jugador]), jogadores.append(jugador)
+        wins.append(df1.groupby(['Jugadores'])['W/L'].sum()[jugador] + df2.groupby(['Jugadores'])['W/L'].sum()[jugador]),jogadores.append(jugador)
     elif jugador in list(df1['Jugadores']) and jugador not in list(df2['Jugadores']):
-        wins.append(df1.groupby(['Jugadores'])['W/L'].sum()[jugador]), jogadores.append(jugador)
+        wins.append(df1.groupby(['Jugadores'])['W/L'].sum()[jugador]),jogadores.append(jugador)
     else:
-        wins.append(df2.groupby(['Jugadores'])['W/L'].sum()[jugador]), jogadores.append(jugador)
-df_wins = pd.DataFrame({'Jugadores': jogadores,
-                        'TotalWL': wins})
-df_wins.sort_values(by='TotalWL', ascending=False, inplace=True)
-df_wins.reset_index(inplace=True)
-df_wins.drop('index', axis=1, inplace=True)
+        wins.append(df2.groupby(['Jugadores'])['W/L'].sum()[jugador]),jogadores.append(jugador)
+for i in wins:
+    try:
+        winloss.append(str(i.count('W'))+'-'+str(i.count('L')))
+        perc.append(round(i.count('W')/(i.count('W')+i.count('L'))*100))
+
+    except:
+        print(0)
+df_wins = pd.DataFrame({'Jugadores':jogadores,
+                         'TotalWL':winloss,
+                         'Win%':perc})
+df_wins.sort_values(by='Win%',ascending = False,inplace = True)
+df_wins.reset_index(inplace = True)
+df_wins.drop('index',axis=1,inplace = True)

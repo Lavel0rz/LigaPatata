@@ -19,9 +19,12 @@ if option == 'Estadisticas':
     option3 = st.sidebar.selectbox('Estadisticas Agregadas',
                                    ['Pichichi', 'MVPs','W/L'])
     if option3 == 'Pichichi':
+        st.title('Maximo Goleador')
         st.dataframe(df_goles)
     elif option3 == 'MVPs':
+        st.title('Clasificacion MVP')
         st.dataframe(df_mvps)
     elif option3 == 'W/L':
+        st.title('Winrate')
         st.dataframe(df_wins)
         
