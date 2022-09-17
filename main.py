@@ -30,7 +30,7 @@ if option == 'Estadisticas':
         st.table(df_goles)
     elif option3 == 'MVPs':
         st.title('Clasificacion MVP')
-        st.dataframe(df_mvps)
+        st.table(df_mvps)
     elif option3 == 'W/L':
         st.title('Winrate')
         st.table(df_wins)
