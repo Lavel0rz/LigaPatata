@@ -22,9 +22,24 @@ def add_bg_from_local(image_file):
     unsafe_allow_html=True
     )
 add_bg_from_local('patataimagen.png')
+with st.sidebar:
+        st.subheader('Welcome to La Liga Patata')
 
+st.markdown(
+    """
+<style>
+.sidebar .sidebar-content {
+    background-image: linear-gradient(#2e7bcf,#2e7bcf);
+    color: black;
+}
+</style>
+""",
+    unsafe_allow_html=True,
+)
 option = st.sidebar.selectbox('Home',
                                       ['HOME','Partidos','Estadisticas'])
+
+
 if option == 'HOME':
     st.metric(label='Pichichi', value=(df_goles[:1]['Jugadores'][0]+' ' +str(df_goles[:1]['GolesTotales'][0])), delta=3, delta_color="normal", help=None)
     st.metric(label='Maximo MVP', value=(df_mvps[:1]['Jugadores'][0]+' '+ str(df_mvps[:1]['MVPTotales'][0])),
