@@ -25,17 +25,6 @@ add_bg_from_local('patataimagen.png')
 with st.sidebar:
         st.subheader('Welcome to La Liga Patata')
 
-st.markdown(
-    """
-<style>
-.sidebar .sidebar-content {
-    background-image: linear-gradient(#2e7bcf,#2e7bcf);
-    color: black;
-}
-</style>
-""",
-    unsafe_allow_html=True,
-)
 option = st.sidebar.selectbox('Home',
                                       ['HOME','Partidos','Estadisticas'])
 
