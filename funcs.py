@@ -1,65 +1,35 @@
 import pandas as pd
-import numpy as np
+
+from functools import reduce
+from data import dfs
 
 
-jugadores = []
-gol = []
-df1 = pd.read_csv('Partido1.csv')
-df2 = pd.read_csv('Partido2.csv')
-Todos = list(set(list(df1['Jugadores']) + list(df2['Jugadores'])))
-for jugador in Todos:
-    if jugador in list(df1['Jugadores']) and jugador in list(df2['Jugadores']):
-        gol.append(df1.groupby(['Jugadores'])['Goles'].sum()[jugador] + df2.groupby(['Jugadores'])['Goles'].sum()[
-            jugador]), jugadores.append(jugador)
-    elif jugador in list(df1['Jugadores']) and jugador not in list(df2['Jugadores']):
-        gol.append(df1.groupby(['Jugadores'])['Goles'].sum()[jugador]), jugadores.append(jugador)
-    else:
-        gol.append(df2.groupby(['Jugadores'])['Goles'].sum()[jugador]), jugadores.append(jugador)
 
-df_goles = pd.DataFrame({'Jugadores': jugadores,
-                         'GolesTotales': gol})
-df_goles.sort_values(by='GolesTotales', ascending=False, inplace=True)
-df_goles.reset_index(inplace=True)
-df_goles.drop('index', axis=1, inplace=True)
+df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['Jugadores'],
+                                            how='outer'), dfs).fillna(0)
 
-mvps = []
-jogadores = []
-for jugador in Todos:
-    if jugador in list(df1['Jugadores']) and jugador in list(df2['Jugadores']):
-        mvps.append(df1.groupby(['Jugadores'])['MVP'].sum()[jugador] + df2.groupby(['Jugadores'])['MVP'].sum()[
-            jugador]), jogadores.append(jugador)
-    elif jugador in list(df1['Jugadores']) and jugador not in list(df2['Jugadores']):
-        mvps.append(df1.groupby(['Jugadores'])['MVP'].sum()[jugador]), jogadores.append(jugador)
-    else:
-        mvps.append(df2.groupby(['Jugadores'])['MVP'].sum()[jugador]), jogadores.append(jugador)
-
-df_mvps = pd.DataFrame({'Jugadores': jogadores,
-                        'MVPTotales': mvps})
-df_mvps.sort_values(by='MVPTotales', ascending=False, inplace=True)
-df_mvps.reset_index(inplace=True)
-df_mvps.drop('index', axis=1, inplace=True)
-
-wins = []
-jogadores = []
+df_goles = df_merged.groupby(['Jugadores'])['Goles_x'].sum() + round(df_merged.groupby(['Jugadores'])['Goles_y'].sum()) +round(df_merged.groupby(['Jugadores'])['Goles'].sum())
+df_goles = df_goles.sort_values(ascending = False)
+df_goles = df_goles.astype(int)
+df_mvps = df_merged.groupby(['Jugadores'])['MVP_x'].sum() + round(df_merged.groupby(['Jugadores'])['MVP_y'].sum()) +round(df_merged.groupby(['Jugadores'])['MVP'].sum())
+df_mvps = df_mvps.sort_values(ascending = False)
+df_mvps = df_mvps.astype(int)
+df_wins = df_merged.groupby(['Jugadores'])['W/L_x'].sum().astype(str) + df_merged.groupby(['Jugadores'])['W/L_y'].sum().astype(str) +df_merged.groupby(['Jugadores'])['W/L'].sum().astype(str)
+print(df_goles.values)
 winloss = []
 perc = []
-for jugador in Todos:
-    if jugador in list(df1['Jugadores']) and jugador in list(df2['Jugadores']):
-        wins.append(df1.groupby(['Jugadores'])['W/L'].sum()[jugador] + df2.groupby(['Jugadores'])['W/L'].sum()[jugador]),jogadores.append(jugador)
-    elif jugador in list(df1['Jugadores']) and jugador not in list(df2['Jugadores']):
-        wins.append(df1.groupby(['Jugadores'])['W/L'].sum()[jugador]),jogadores.append(jugador)
-    else:
-        wins.append(df2.groupby(['Jugadores'])['W/L'].sum()[jugador]),jogadores.append(jugador)
-for i in wins:
-    try:
-        winloss.append(str(i.count('W'))+'-'+str(i.count('L')))
-        perc.append(round(i.count('W')/(i.count('W')+i.count('L'))*100))
+for i in df_wins.values:
+    winloss.append(str(i.count('W'))+'-'+str(i.count('L')))
+    perc.append(round(i.count('W') / (i.count('W') + i.count('L')) * 100))
+jogadores = (list(df_wins.index))
 
-    except:
-        print(0)
-df_wins = pd.DataFrame({'Jugadores':jogadores,
+df_wins2 = pd.DataFrame({'Jugadores':jogadores,
                          'TotalWL':winloss,
                          'Win%':perc})
-df_wins.sort_values(by='Win%',ascending = False,inplace = True)
-df_wins.reset_index(inplace = True)
-df_wins.drop('index',axis=1,inplace = True)
+df_wins2.sort_values(by='TotalWL',ascending = False,inplace = True)
+df_wins2.reset_index(inplace = True)
+df_wins2.drop('index',axis=1,inplace = True)
+
+
+
+
