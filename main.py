@@ -1,5 +1,6 @@
 import streamlit as st
-from funcs import dfs, df_wins2, df_goles, df_mvps
+from funcs import df_wins2, df_goles, df_mvps
+from data import dfs
 
 st.set_page_config(page_title="LigaPatata", page_icon="soccer", initial_sidebar_state='expanded')
 st.title('Liga Patata')
@@ -57,4 +58,5 @@ if option == 'Estadisticas':
     elif option3 == 'W/L':
         st.title('Winrate')
         st.table(df_wins2)
-        
+
+
