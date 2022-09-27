@@ -1,5 +1,4 @@
 import pandas as pd
-import emoji
 from functools import reduce
 from data import dfs
 
@@ -32,9 +31,9 @@ df_wins2.drop('index',axis=1,inplace = True)
 
 def emojis(x):
     if x == 'Javi' or x == 'Fran':
-        return x + ' ' + emoji.emojize(':fire:')
+        return x + ' ' + '\N{fire}'
     elif x == 'Pepe':
-        return x + ' ' + emoji.emojize(':droplet:')
+        return x + ' ' + '\N{droplet}'
     else:
         return x
 
