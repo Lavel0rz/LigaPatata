@@ -39,12 +39,12 @@ if option == 'Partidos':
     option2 = st.sidebar.selectbox('Partidos',
                                    ['Jornada1', 'Jornada2','Jornada3'])
     if option2 == 'Jornada1':
-        st.table(dfs[0])
+        st.table(dfs[2])
     elif option2 == 'Jornada2':
         st.table(dfs[1])
 
     elif option2 == 'Jornada3':
-        st.table(dfs[2])
+        st.table(dfs[0])
 
 if option == 'Estadisticas':
     option3 = st.sidebar.selectbox('Estadisticas Agregadas',
@@ -60,3 +60,4 @@ if option == 'Estadisticas':
         st.table(df_wins2)
 
 
+print(dfs)
