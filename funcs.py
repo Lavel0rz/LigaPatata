@@ -1,5 +1,5 @@
 import pandas as pd
-
+import emoji
 from functools import reduce
 from data import dfs
 
@@ -30,6 +30,13 @@ df_wins2.sort_values(by='TotalWL',ascending = False,inplace = True)
 df_wins2.reset_index(inplace = True)
 df_wins2.drop('index',axis=1,inplace = True)
 
+def emojis(x):
+    if x == 'Javi' or x == 'Fran':
+        return x + ' ' + emoji.emojize(':fire:')
+    elif x == 'Pepe':
+        return x + ' ' + emoji.emojize(':droplet:')
+    else:
+        return x
 
 
-
+df_wins2['Jugadores'] = df_wins2['Jugadores'].apply(lambda x: emojis(x))

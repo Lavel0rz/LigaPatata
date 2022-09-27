@@ -59,5 +59,3 @@ if option == 'Estadisticas':
         st.title('Winrate')
         st.table(df_wins2)
 
-
-print(dfs)
