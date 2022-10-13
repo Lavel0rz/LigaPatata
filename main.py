@@ -1,6 +1,7 @@
 import streamlit as st
-from funcs import df_wins2, df_goles, df_mvps
+from funcs import df_wins2, df_goles, df_mvps, gen_wins_dict
 from data import dfs
+import pandas as pd
 
 st.set_page_config(page_title="LigaPatata", page_icon="soccer", initial_sidebar_state='expanded')
 st.title('Liga Patata')
@@ -36,7 +37,7 @@ if option == 'Partidos':
 
 if option == 'Estadisticas':
     option3 = st.sidebar.selectbox('Estadisticas Agregadas',
-                                   ['Pichichi', 'MVPs','W/L'])
+                                   ['Pichichi', 'MVPs','W/L','MejoresCompis'])
     if option3 == 'Pichichi':
         st.title('Maximo Goleador')
         st.table(df_goles)
@@ -47,4 +48,22 @@ if option == 'Estadisticas':
         st.title('Winrate')
         st.subheader('Minimo 3 Partidos Jugados')
         st.table(df_wins2)
+    elif option3 == 'MejoresCompis':
+        dict = gen_wins_dict()
+        col1, col2 = st.columns(2)
+        with col1:
+            mejores = st.checkbox('Con que Jugador gano mas')
 
+
+        if mejores:
+            compi = st.selectbox(options = dict.keys(),label = 'Jugador')
+            value = []
+            names = []
+            for k,v in dict[compi].items():
+                names.append(k)
+                value.append(v)
+            df = pd.DataFrame({'Companeros': names, 'Partidos Ganados': value})
+            df.sort_values(by='Partidos Ganados', ascending=False, inplace=True)
+            df = df[:3].reset_index().set_index(pd.RangeIndex(1, len(df[:3]) + 1))
+            df.drop('index', axis=1, inplace=True)
+            st.table(df)
