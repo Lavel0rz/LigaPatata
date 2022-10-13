@@ -1,5 +1,5 @@
 import streamlit as st
-from funcs import df_wins2, df_goles, df_mvps, gen_wins_dict
+from funcs import *
 from data import dfs
 import pandas as pd
 
