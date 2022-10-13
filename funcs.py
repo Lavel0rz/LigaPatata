@@ -1,4 +1,3 @@
-
 import pandas as pd
 from data import dfs
 import itertools
@@ -123,4 +122,4 @@ def emojis(x):
         return x
 
 
-df_wins2['Jugadores'] = df_wins2['Jugadores'].apply(lambda x: emojis(x) if x == 'Javi' or x == 'Hugo' or x == 'Pepe' else x
+df_wins2['Jugadores'] = df_wins2['Jugadores'].apply(lambda x: emojis(x) if x == 'Javi' or x == 'Hugo' or x == 'Pepe' else x)
