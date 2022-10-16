@@ -23,7 +23,7 @@ if option == 'HOME':
 
 if option == 'Partidos':
     option2 = st.sidebar.selectbox('Partidos',
-                                   ['Jornada1', 'Jornada2','Jornada3','Jornada4','Jornada5])
+                                   ['Jornada1', 'Jornada2','Jornada3','Jornada4','Jornada5'])
     if option2 == 'Jornada1':
         st.table(dfs[0])
     elif option2 == 'Jornada2':
