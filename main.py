@@ -23,17 +23,20 @@ if option == 'HOME':
 
 if option == 'Partidos':
     option2 = st.sidebar.selectbox('Partidos',
-                                   ['Jornada1', 'Jornada2','Jornada3','Jornada4'])
+                                   ['Jornada1', 'Jornada2','Jornada3','Jornada4','Jornada5])
     if option2 == 'Jornada1':
-        st.table(dfs[3])
+        st.table(dfs[0])
     elif option2 == 'Jornada2':
-        st.table(dfs[2])
-
-    elif option2 == 'Jornada3':
         st.table(dfs[1])
 
+    elif option2 == 'Jornada3':
+        st.table(dfs[2])
+
     elif option2 == 'Jornada4':
-        st.table(dfs[0])
+        st.table(dfs[3])
+                                    
+    elif option2 == 'Jornada5':
+        st.table(dfs[4])                               
 
 if option == 'Estadisticas':
     option3 = st.sidebar.selectbox('Estadisticas Agregadas',
