@@ -15,11 +15,16 @@ option = st.sidebar.selectbox('Home',
 
 
 if option == 'HOME':
-    st.metric(label='Pichichi', value=(df_goles.index[0]+ ' '+str(round(df_goles.values[0]))), delta=3, delta_color="normal")
-    st.metric(label='Maximo MVP', value=(df_mvps.index[0]+' '+ str(round(df_mvps.values[0]))),
-              delta=1, delta_color="normal")
-    st.metric(label='El Victorioso', value=(df_wins2.sort_values(by=['Win%','TotalWL'],ascending=False)[:1]['Jugadores'].values[0]+' '+df_wins2.sort_values(by=['Win%','TotalWL'],ascending=False)[:1]['TotalWL'].values[0]),
-              delta=1, delta_color="normal")
+    col1, col2,col3 = st.columns(3)
+    with col1:
+        st.metric(label='Pichichi', value=(df_goles.index[0]+ ' '+str(round(df_goles.values[0]))), delta=3, delta_color="normal")
+    with col2:
+        st.metric(label='Maximo MVP', value=(df_mvps.index[0]+' '+ str(round(df_mvps.values[0]))),
+                  delta=1, delta_color="normal")
+    with col3:
+        st.metric(label='El Victorioso', value=(df_wins2.sort_values(by=['Win%','TotalWL'],ascending=False)[:1]['Jugadores'].values[0]+' '+df_wins2.sort_values(by=['Win%','TotalWL'],ascending=False)[:1]['TotalWL'].values[0]),
+                  delta=1, delta_color="normal")
+    st.plotly_chart(figure_or_data=fig)
 
 if option == 'Partidos':
     option2 = st.sidebar.selectbox('Partidos',
