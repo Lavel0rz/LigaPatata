@@ -9,8 +9,15 @@ df_mvps = merged_df.groupby(['Jugadores'])['MVP'].sum().sort_values(ascending=Fa
 df_wins = merged_df.groupby(['Jugadores'])['WL'].sum().sort_values(ascending=False)
 df_gol = pd.DataFrame({'Jugadores':df_goles.index,
               'Goles':df_goles.values})
+Equipos = ['Amarillo','Azul']
+Victorias = [4,1]
+totales = pd.DataFrame({'Equipos':Equipos,
+                   'Victorias':Victorias})
 df_gol = df_gol[df_gol['Goles']!= 0]
-fig = px.bar(df_gol, x='Jugadores', y='Goles',text = df_gol['Goles'],title = 'Goleadores Patatas',template = 'ggplot2')
+fig = px.bar(df_gol, x='Jugadores', y='Goles',text = df_gol['Goles'],title = 'Goleadores Patatas',template = 'ggplot2',width=500,height=500)
+fig2 = px.pie(totales, values=totales['Victorias'], names=totales['Equipos'], title='Los colores importan',color='Equipos',color_discrete_map={'Amarillo':'yellow',
+                                                                                                                               'Azul':'blue'},width=350,height=350)
+
 
 winloss = []
 perc = []

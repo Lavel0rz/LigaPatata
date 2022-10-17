@@ -24,7 +24,11 @@ if option == 'HOME':
     with col3:
         st.metric(label='El Victorioso', value=(df_wins2.sort_values(by=['Win%','TotalWL'],ascending=False)[:1]['Jugadores'].values[0]+' '+df_wins2.sort_values(by=['Win%','TotalWL'],ascending=False)[:1]['TotalWL'].values[0]),
                   delta=1, delta_color="normal")
-    st.plotly_chart(figure_or_data=fig)
+    col4,col5 = st.columns(2)
+    with col4:
+        st.plotly_chart(figure_or_data=fig)
+    with col5:
+        st.plotly_chart(figure_or_data=fig2)
 
 if option == 'Partidos':
     option2 = st.sidebar.selectbox('Partidos',
