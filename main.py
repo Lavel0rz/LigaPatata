@@ -10,14 +10,14 @@ st.sidebar.image(r"patata.jpg", use_column_width=True)
 with st.sidebar:
         st.subheader('Welcome to La Liga Patata')
 
-option = st.sidebar.selectbox('Home',
+option = st.sidebar.radio('Menu',
                                       ['HOME','Partidos','Estadisticas'])
 
 
 if option == 'HOME':
     col1, col2,col3 = st.columns(3)
     with col1:
-        st.metric(label='Pichichi', value=(df_goles.index[0]+ ' '+str(round(df_goles.values[0]))), delta=0, delta_color="normal")
+        st.metric(label='Pichichi', value=(df_goles.index[0]+ ' '+str(round(df_goles.values[0]))), delta=3, delta_color="normal")
     with col2:
         st.metric(label='Maximo MVP', value=(df_mvps.index[0]+' '+ str(round(df_mvps.values[0]))),
                   delta=1, delta_color="normal")
@@ -31,7 +31,7 @@ if option == 'HOME':
         st.plotly_chart(figure_or_data=fig2)
 
 if option == 'Partidos':
-    option2 = st.sidebar.selectbox('Partidos',
+    option2 = st.radio('Partidos',
                                    ['Jornada1', 'Jornada2','Jornada3','Jornada4','Jornada5'])
     if option2 == 'Jornada1':
         st.table(dfs[0])
@@ -48,7 +48,7 @@ if option == 'Partidos':
         st.table(dfs[4])                               
 
 if option == 'Estadisticas':
-    option3 = st.sidebar.selectbox('Estadisticas Agregadas',
+    option3 = st.radio('Estadisticas Agregadas',
                                    ['Pichichi', 'MVPs','W/L','MejoresCompis'])
     if option3 == 'Pichichi':
         st.title('Maximo Goleador')
