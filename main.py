@@ -3,7 +3,7 @@ from funcs import *
 from data import dfs
 import pandas as pd
 
-st.set_page_config(page_title="LigaPatata", page_icon="soccer", initial_sidebar_state='expanded')
+st.set_page_config(page_title="LigaPatata", page_icon="soccer", initial_sidebar_state='expanded',layout="wide")
 st.title('Liga Patata')
 st.sidebar.image(r"patata.jpg", use_column_width=True)
 
