@@ -41,7 +41,7 @@ if option == 'HOME':
                         color='jugadores', color_discrete_map={'A': 'blue', 'B': 'red'})
     fig.update_traces(fill='toself')
 
-    st.pyplot(fig3)
+    #st.pyplot(fig3)
 
 
     st.markdown("<h1 style='text-align: center; color: blue;'>Performance</h1>", unsafe_allow_html=True)
