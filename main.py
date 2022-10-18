@@ -44,7 +44,7 @@ if option == 'HOME':
     #st.pyplot(fig3)
 
 
-    st.markdown("<h1 style='text-align: center; color: blue;'>En construccion: Performance Pentagons</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: blue;'>En construccion: Performance Pentagons(PP's)</h1>", unsafe_allow_html=True)
     st.plotly_chart(figure_or_data=fig)
 
 if option == 'Partidos':
