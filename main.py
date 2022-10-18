@@ -38,7 +38,7 @@ if option == 'HOME':
                    'Hugo', 'Hugo', 'Hugo', 'Hugo', 'Hugo']))
 
     fig = px.line_polar(df, r='value', theta='variable', line_close=True,
-                        color='jugadores', color_discrete_map={'A': 'blue', 'B': 'red'})
+                        color='jugadores')
     fig.update_traces(fill='toself')
 
     #st.pyplot(fig3)
