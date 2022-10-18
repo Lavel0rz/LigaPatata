@@ -2,6 +2,7 @@ import pandas as pd
 from data import dfs
 import itertools
 import plotly.express as px
+import matplotlib.pyplot as plt
 merged_df = pd.concat(dfs)
 
 df_goles = merged_df.groupby(['Jugadores'])['Goles'].sum().sort_values(ascending=False)
@@ -17,7 +18,8 @@ df_gol = df_gol[df_gol['Goles']!= 0]
 fig = px.bar(df_gol, x='Jugadores', y='Goles',text = df_gol['Goles'],title = 'Goleadores Patatas',template = 'ggplot2',width=500,height=500)
 fig2 = px.pie(totales, values=totales['Victorias'], names=totales['Equipos'], title='Los colores importan',color='Equipos',color_discrete_map={'Amarillo':'yellow',
                                                                                                                                'Azul':'blue'},width=350,height=350)
-
+fig3,ax = plt.subplots(figsize=(10,10))
+ax = plt.stem(df_gol['Jugadores'],df_gol['Goles'],orientation='horizontal')
 
 winloss = []
 perc = []

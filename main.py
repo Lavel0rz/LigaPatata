@@ -29,6 +29,23 @@ if option == 'HOME':
         st.plotly_chart(figure_or_data=fig)
     with col5:
         st.plotly_chart(figure_or_data=fig2)
+    df = pd.DataFrame(dict(
+        value=[6, 4, 8, 10, 10,
+               9, 10, 6, 9, 10],
+        variable=['Gol', 'Porteria', 'Magia', 'Tercer Tiempo', 'Espiritu',
+                  'Gol', 'Porteria', 'Magia', 'Tercer Tiempo', 'Espiritu'],
+        jugadores=['Pepe', 'Pepe', 'Pepe', 'Pepe', 'Pepe',
+                   'Hugo', 'Hugo', 'Hugo', 'Hugo', 'Hugo']))
+
+    fig = px.line_polar(df, r='value', theta='variable', line_close=True,
+                        color='jugadores', color_discrete_map={'A': 'blue', 'B': 'red'})
+    fig.update_traces(fill='toself')
+
+    st.pyplot(fig3)
+
+
+    st.markdown("<h1 style='text-align: center; color: blue;'>Performance</h1>", unsafe_allow_html=True)
+    st.plotly_chart(figure_or_data=fig)
 
 if option == 'Partidos':
     option2 = st.radio('Partidos',
