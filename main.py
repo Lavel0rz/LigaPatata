@@ -51,7 +51,7 @@ if option == 'HOME':
 
 if option == 'Partidos':
     option2 = st.radio('Partidos',
-                       ['Jornada1', 'Jornada2', 'Jornada3', 'Jornada4', 'Jornada5'])
+                       ['Jornada1', 'Jornada2', 'Jornada3', 'Jornada4', 'Jornada5','Jornada6'])
     if option2 == 'Jornada1':
         st.table(dfs[0])
     elif option2 == 'Jornada2':
@@ -65,6 +65,9 @@ if option == 'Partidos':
 
     elif option2 == 'Jornada5':
         st.table(dfs[4])
+        
+    elif option2 == 'Jornada6':
+        st.table(dfs[5])
 
 if option == 'Estadisticas':
     option3 = st.radio('Estadisticas Agregadas',
