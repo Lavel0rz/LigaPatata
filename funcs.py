@@ -11,7 +11,7 @@ df_wins = merged_df.groupby(['Jugadores'])['WL'].sum().sort_values(ascending=Fal
 df_gol = pd.DataFrame({'Jugadores':df_goles.index,
               'Goles':df_goles.values})
 Equipos = ['Amarillo','Azul']
-Victorias = [4,1]
+Victorias = [5,1]
 totales = pd.DataFrame({'Equipos':Equipos,
                    'Victorias':Victorias})
 df_gol = df_gol[df_gol['Goles']!= 0]
