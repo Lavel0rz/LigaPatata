@@ -17,7 +17,7 @@ totales = pd.DataFrame({'Equipos':Equipos,
 df_gol = df_gol[df_gol['Goles']>2]
 fig = px.bar(df_gol, x='Jugadores', y='Goles',text = df_gol['Goles'],title = 'Goleadores Patatas',template = 'ggplot2',width=500,height=500)
 fig2 = px.pie(totales, values=totales['Victorias'], names=totales['Equipos'], title='Los colores importan',color='Equipos',color_discrete_map={'Amarillo':'yellow',
-                                                                                                                               'Azul':'blue'},width=350,height=350)
+                                                                                                                               'Azul':'blue'},width=450,height=450)
 fig3,ax = plt.subplots(figsize=(10,10))
 ax = plt.stem(df_gol['Jugadores'],df_gol['Goles'],orientation='horizontal')
 
