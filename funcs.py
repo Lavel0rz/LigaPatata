@@ -128,12 +128,12 @@ df_wins2['TotalWL'] = df_wins2['TotalWL'].apply(lambda x: minimo(x))
 df_wins2 = df_wins2[df_wins2['TotalWL'] != 0]
 
 def emojis(x):
-    if x == 'Alfonso' or x == 'Omar':
+    if x == 'Alfonso' or x == 'Omar' or x == 'Jesus D':
         return x + ' ' + '\N{fire}'
-    elif x == 'Manolo':
+    elif x == 'Manolo' or x == 'Raul':
         return x + ' ' + '\N{droplet}'
     else:
         return x
 
 
-df_wins2['Jugadores'] = df_wins2['Jugadores'].apply(lambda x: emojis(x) if x == 'Alfonso' or x == 'Omar' or x == 'Manolo' else x)
+df_wins2['Jugadores'] = df_wins2['Jugadores'].apply(lambda x: emojis(x) if x == 'Alfonso' or x == 'Jesus D' or x =='Raul' or x == 'Omar' or x == 'Manolo' else x)
