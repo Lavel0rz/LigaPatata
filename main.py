@@ -16,7 +16,7 @@ option = st.sidebar.radio('Menu',
 if option == 'HOME':
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.metric(label='Pichichi', value=(df_goles.index[0] + ' ' + str(round(df_goles.values[0]))), delta=3,
+        st.metric(label='Pichichi', value=(df_goles.index[0] + ' ' + str(round(df_goles.values[0]))), delta=4,
                   delta_color="normal")
     with col2:
         st.metric(label='Maximo MVP', value=(df_mvps.index[0] + ' ' + str(round(df_mvps.values[0]))),
