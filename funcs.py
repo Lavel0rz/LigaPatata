@@ -8,8 +8,10 @@ merged_df = pd.concat(dfs)
 df_goles = merged_df.groupby(['Jugadores'])['Goles'].sum().sort_values(ascending=False)
 df_mvps = merged_df.groupby(['Jugadores'])['MVP'].sum().sort_values(ascending=False)
 df_wins = merged_df.groupby(['Jugadores'])['WL'].sum().sort_values(ascending=False)
+df_pjs = merged_df.groupby(['Jugadores'])['PJ'].sum().sort_values(ascending=False)
 df_gol = pd.DataFrame({'Jugadores':df_goles.index,
               'Goles':df_goles.values})
+df_Gper = df_gol.merge(df_pjs)
 Equipos = ['Amarillo','Azul']
 Victorias = [8,2]
 totales = pd.DataFrame({'Equipos':Equipos,
