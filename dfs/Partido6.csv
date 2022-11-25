@@ -1,11 +1,11 @@
-Jugadores,Goles,Equipo,MVP,WL
-Javi,1,Am,0,W
-Rafa,0,Am,0,W
-Toni,1,Am,0,W
-Omar,3,Am,1,W
-Alfonso,0,Am,0,W
-Diego,0,Az,0,L
-Pepe,0,Az,0,L
-Pablo,3,Az,0,L
-Hugo,0,Az,0,L
-Manu Diego,1,Az,0,L
+Jugadores,Goles,Equipo,MVP,WL,PJ
+Javi,1,Am,0,W,1
+Rafa,0,Am,0,W,1
+Toni,1,Am,0,W,1
+Omar,3,Am,1,W,1
+Alfonso,0,Am,0,W,1
+Diego,0,Az,0,L,1
+Pepe,0,Az,0,L,1
+Pablo,3,Az,0,L,1
+Hugo,0,Az,0,L,1
+Manu Diego,1,Az,0,L,1
