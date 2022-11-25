@@ -11,7 +11,9 @@ df_wins = merged_df.groupby(['Jugadores'])['WL'].sum().sort_values(ascending=Fal
 df_pjs = merged_df.groupby(['Jugadores'])['PJ'].sum().sort_values(ascending=False)
 df_gol = pd.DataFrame({'Jugadores':df_goles.index,
               'Goles':df_goles.values})
-df_Gper = df_gol.merge(df_pjs)
+df_jugados = pd.DataFrame({'Jugadores':df_pjs.index,
+              'Goles':df_pjs.values})
+df_Gper = df_gol.merge(df_jugados)
 Equipos = ['Amarillo','Azul']
 Victorias = [8,2]
 totales = pd.DataFrame({'Equipos':Equipos,
