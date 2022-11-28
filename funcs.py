@@ -12,8 +12,9 @@ df_pjs = merged_df.groupby(['Jugadores'])['PJ'].sum().sort_values(ascending=Fals
 df_gol = pd.DataFrame({'Jugadores':df_goles.index,
               'Goles':df_goles.values})
 df_jugados = pd.DataFrame({'Jugadores':df_pjs.index,
-              'Goles':df_pjs.values})
-df_Gper = df_gol.merge(df_jugados)
+              'Partidos':df_pjs.values})
+df_Gper = df_gol.merge(df_jugados,left_on = 'Jugadores',right_on = 'Jugadores')
+df_Gper['GPP'] = round(df_Gper['Goles']/df_Gper['Partidos'],1)
 Equipos = ['Amarillo','Azul']
 Victorias = [8,2]
 totales = pd.DataFrame({'Equipos':Equipos,
@@ -40,6 +41,8 @@ df_wins2.reset_index(inplace = True)
 df_wins2.drop('index',axis=1,inplace = True)
 df_wins2 = df_wins2.sort_values(by=['Win%','TotalWL'],ascending=False)
 df_wins2.index = pd.RangeIndex(1,len(df_wins2)+1)
+df_per = df_wins2.merge(df_Gper,left_on = 'Jugadores',right_on='Jugadores')
+df_per = df_per[df_per['Partidos']>=3]
 
 def gen_wins_dict():
 

@@ -15,6 +15,7 @@ option = st.sidebar.radio('Menu',
 
 if option == 'HOME':
     col1, col2, col3 = st.columns(3)
+
     with col1:
         st.metric(label='Pichichi', value=(df_goles.index[0] + ' ' + str(round(df_goles.values[0]))), delta=4,
                   delta_color="normal")
@@ -81,7 +82,7 @@ if option == 'Estadisticas':
     elif option3 == 'W/L':
         st.title('Winrate')
         st.subheader('Minimo 3 Partidos Jugados')
-        st.table(df_wins2)
+        st.table(df_per)
     elif option3 == 'MejoresCompis':
         dict = gen_wins_dict()
         col1, col2 = st.columns(2)
