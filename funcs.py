@@ -16,7 +16,7 @@ df_jugados = pd.DataFrame({'Jugadores':df_pjs.index,
 df_Gper = df_gol.merge(df_jugados,left_on = 'Jugadores',right_on = 'Jugadores')
 df_Gper['GPP'] = round(df_Gper['Goles']/df_Gper['Partidos'],1)
 Equipos = ['Amarillo','Azul']
-Victorias = [8,2]
+Victorias = [8,3]
 totales = pd.DataFrame({'Equipos':Equipos,
                    'Victorias':Victorias})
 df_gol = df_gol[df_gol['Goles']>2]
